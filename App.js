@@ -1,11 +1,17 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Image,Text, View } from 'react-native';
+
+import Logo from './assets/logo-findhelp.png'
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      {/* <Image source={require('./assets/logo-findhelp.png')} /> */}
+      <Image source={Logo} />
+      <Text>FindHelp</Text>
+      <Text>People Connected</Text>
+      <Text>Communities Strengthened</Text>
       <StatusBar style="auto" />
     </View>
   );
