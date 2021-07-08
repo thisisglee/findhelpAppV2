@@ -15,7 +15,7 @@ export default function App() {
           backgroundColor: '#0254a1',
         }}
         leftComponent={{ icon: 'menu', color: '#fff' }}
-        centerComponent={{ text: 'MY TITLE', style: { color: '#fff' } }}
+        centerComponent={{ text: 'FindHelp', style: { color: '#fff' } }}
         rightComponent={{ icon: 'home', color: '#fff' }}
       />
       <ScrollView>
