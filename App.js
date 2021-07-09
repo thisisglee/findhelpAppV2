@@ -1,14 +1,18 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Image, Text, View, ScrollView, Linking } from 'react-native';
-import { Header, Icon, Button } from 'react-native-elements';
+import { Header, Icon, Button, Overlay } from 'react-native-elements';
 
 import Logo from './assets/logo-findhelp.png';
 
 export default function App() {
-  const operator = Platform.select({ ios: '&', android: '?' });
+  const [visible, setVisible] = useState(true);
+
+  const toggleOverlay = () => {
+    setVisible(!visible);
+  };
   return (
     <>
+      {/* Header */}
       <Header
         placement="left"
         containerStyle={{
@@ -17,16 +21,22 @@ export default function App() {
         leftComponent={{ icon: 'menu', color: '#fff' }}
         centerComponent={{ text: 'FindHelp', style: { color: '#fff' } }}
         rightComponent={{ icon: 'home', color: '#fff' }}
+        statusBarProps={{ barStyle: 'light-content', backgroundColor: '#0254a1' }}
       />
+      {/* Body */}
       <ScrollView>
         <View style={styles.container}>
+          <Button title="Open Overlay" onPress={toggleOverlay} />
+
+          <Overlay isVisible={visible} onBackdropPress={toggleOverlay}>
+            <Image source={Logo} />
+            <Text>People Connected</Text>
+            <Text>Communities Strengthened</Text>
+          </Overlay>
           {/* <Image source={require('./assets/logo-findhelp.png')} /> */}
-          <Image source={Logo} />
-          <Text>People Connected</Text>
-          <Text>Communities Strengthened</Text>
-          <StatusBar style="auto" />
         </View>
       </ScrollView>
+      {/* Footer */}
       <View style={{ height: 100, backgroundColor: '#ed3025' }}>
         <Text style={{ textAlign: 'center', color: '#fff', fontSize: 20, marginTop: '2%' }}>
           Connect 211?
